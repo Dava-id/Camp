@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <meta name="description" content="Kalisengon Riverside Camping Ground & Grill di Pacet, Mojokerto. Nikmati camping pinggir sungai dengan pemandangan indah.">
-  <meta name="format-detection" content="telephone=no"> <!-- Mencegah deteksi otomatis nomor telepon -->
   <title>Kalisengon · Riverside Camping</title>
   <!-- Font & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
@@ -52,22 +51,40 @@
       <p class="pricelist-caption"><i class="fas fa-campground"></i> Tersedia paket grill + sewa tenda</p>
     </div>
 
-    <!-- VIDEO TIKTOK + MAPS -->
+    <!-- VIDEO TIKTOK + MAPS - DIPERBAIKI UNTUK ANDROID -->
     <div class="media-split">
       <div class="media-block reveal">
         <h3><i class="fab fa-tiktok" style="color:#111;"></i> Suasana terbaru</h3>
-        <div class="tiktok-frame">
-          <iframe src="https://www.tiktok.com/embed/v2/7592598004150881544" allowfullscreen loading="lazy" title="Video TikTok Kalisengon"></iframe>
+        <div class="tiktok-card">
+          <!-- thumbnail statis + link langsung (solusi untuk android) -->
+          <a href="https://www.tiktok.com/@kalisengon/video/7592598004150881544" target="_blank" rel="noopener noreferrer">
+            <div class="tiktok-thumb">
+              <img src="https://placehold.co/400x600/2a412a/white?text=TikTok+Kalisengon&font=inter" alt="Video TikTok Kalisengon">
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+          </a>
+          <p class="media-link"><a href="https://www.tiktok.com/@kalisengon/video/7592598004150881544" target="_blank">tonton di TikTok →</a></p>
         </div>
-        <p class="media-link"><a href="https://www.tiktok.com/@kalisengon/video/7592598004150881544" target="_blank">lihat di TikTok →</a></p>
       </div>
 
       <div class="media-block reveal">
         <h3><i class="fas fa-map"></i> Lokasi tepat</h3>
         <div class="map-frame">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.123!2d112.5290277!3d-7.6677921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78774f39ea7327%3A0xe0619f7adc5c3999!2sKalisengon%20Riverside%20Camping%20Ground%20%26%20Eatery!5e0!3m2!1sid!2sid!4v1711456789123!5m2!1sid!2sid" allowfullscreen="" loading="lazy" title="Peta Kalisengon"></iframe>
+          <!-- maps dengan loading="lazy" dan ukuran tetap -->
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.123!2d112.5290277!3d-7.6677921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78774f39ea7327%3A0xe0619f7adc5c3999!2sKalisengon%20Riverside%20Camping%20Ground%20%26%20Eatery!5e0!3m2!1sid!2sid!4v1711456789123!5m2!1sid!2sid" 
+                  loading="lazy" 
+                  title="Peta Kalisengon"
+                  sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
         </div>
         <p class="map-address">Sajen, Pacet, Mojokerto 61374</p>
+        <!-- link google maps untuk android -->
+        <p class="map-link">
+          <a href="https://maps.google.com/?q=Kalisengon+Riverside+Camping+Ground+%26+Eatery" target="_blank">
+            <i class="fas fa-directions"></i> Buka di Google Maps
+          </a>
+        </p>
       </div>
     </div>
 
