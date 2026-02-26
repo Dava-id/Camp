@@ -7,14 +7,25 @@ window.openModal = function(element) {
   if (img) {
     modal.style.display = 'flex';
     modalImg.src = img.src;
+    // Mencegah scroll di belakang modal
+    document.body.style.overflow = 'hidden';
   }
 }
 
 window.closeModal = function(event) {
   if (event.target === modal || event.target.classList.contains('close-modal')) {
     modal.style.display = 'none';
+    document.body.style.overflow = ''; // Kembalikan scroll
   }
 }
+
+// Tutup modal dengan tombol ESC
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && modal.style.display === 'flex') {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+});
 
 // COPY NOMOR ADMIN
 const waBtn = document.getElementById('waBtn');
@@ -26,6 +37,7 @@ waBtn.addEventListener('click', function(e) {
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 2000);
   }).catch(() => {
+    // Fallback jika clipboard gagal
     alert('Gagal menyalin, silakan salin manual: 087725826284');
   });
 });
@@ -43,7 +55,18 @@ function checkReveal() {
   });
 }
 
-window.addEventListener('scroll', checkReveal);
+// throttle scroll untuk performa
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      checkReveal();
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+
 window.addEventListener('load', checkReveal);
 // panggil sekali setelah load
 setTimeout(checkReveal, 100);
