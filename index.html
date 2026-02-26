@@ -2,141 +2,482 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <meta name="description" content="Kalisengon Riverside Camping Ground & Grill di Pacet, Mojokerto. Nikmati camping pinggir sungai dengan pemandangan indah.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <title>Kalisengon · Riverside Camping</title>
-  <!-- Font & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- CSS terpisah -->
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* CSS LANGSUNG DI HTML AGAR PASTI TERLOAD */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #1a2a1a;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.5;
+      padding: 12px;
+    }
+    .card {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #fcf9f2;
+      border-radius: 40px 40px 30px 30px;
+      overflow: hidden;
+      box-shadow: 0 25px 40px -10px #0a1f0a;
+      border: 1px solid #e6d7b6;
+    }
+    .inner {
+      padding: 24px 22px;
+    }
+    .header-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: #1f4f1f;
+      letter-spacing: -1px;
+    }
+    .h1-light {
+      font-weight: 300;
+      color: #aa834b;
+      font-size: 1.8rem;
+    }
+    .agenda {
+      background: #c47e3a;
+      color: white;
+      padding: 8px 24px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 4px 10px #b45f1a;
+    }
+    .sub {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: #5d6b4a;
+      border-bottom: 2px solid #e0cfaf;
+      padding-bottom: 18px;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+    .sub-badge {
+      background: #e2d4b8;
+      padding: 6px 18px;
+      border-radius: 40px;
+      margin-left: auto;
+    }
+    /* GALERI 3 KOLOM SEDERHANA */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 30px 0;
+    }
+    .gallery-item {
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 15px 20px -8px #344e34;
+      border: 3px solid white;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* PRICELIST 2 KOLOM */
+    .pricelist-area {
+      background: #f5efe0;
+      border-radius: 45px;
+      padding: 30px 24px;
+      margin: 40px 0;
+    }
+    .pricelist-area h2 {
+      font-size: 2rem;
+      color: #2d612d;
+      margin-bottom: 25px;
+      border-left: 10px solid #cc9f64;
+      padding-left: 20px;
+    }
+    .pricelist-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .pricelist-item {
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 15px 20px -5px #6a7353;
+      border: 4px solid white;
+      cursor: pointer;
+    }
+    .pricelist-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    /* TIKTOK CARD - PALING SEDERHANA */
+    .tiktok-card {
+      background: #e2e2d6;
+      border-radius: 40px;
+      padding: 25px;
+      margin: 30px 0;
+      text-align: center;
+    }
+    .tiktok-thumb {
+      max-width: 300px;
+      margin: 0 auto;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 4px solid white;
+      box-shadow: 0 15px 25px -8px black;
+    }
+    .tiktok-thumb img {
+      width: 100%;
+      display: block;
+    }
+    .tiktok-btn {
+      display: inline-block;
+      background: #000;
+      color: white;
+      padding: 15px 35px;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 20px;
+      font-size: 1.2rem;
+      border: 2px solid #ff5e5e;
+    }
+    /* MAPS */
+    .maps-card {
+      background: #cfd5be;
+      border-radius: 40px;
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .map-frame {
+      border-radius: 30px;
+      overflow: hidden;
+      border: 4px solid white;
+      height: 250px;
+      background: #899878;
+    }
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .map-link {
+      display: block;
+      background: #3b6e3b;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 15px;
+    }
+    /* ITINERARY */
+    .itinerary-grid {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 30px 0;
+    }
+    .day-box {
+      flex: 1 1 250px;
+      background: #fcf3e3;
+      border-radius: 40px;
+      padding: 25px;
+      box-shadow: 0 15px 25px -8px #9b8f74;
+    }
+    .day-box h3 {
+      font-size: 2.2rem;
+      color: #7b623a;
+      margin-bottom: 20px;
+    }
+    .schedule {
+      display: flex;
+      align-items: baseline;
+      gap: 15px;
+      margin: 15px 0;
+      flex-wrap: wrap;
+    }
+    .time {
+      background: #466446;
+      color: white;
+      padding: 5px 16px;
+      border-radius: 40px;
+      font-weight: 600;
+      min-width: 70px;
+      text-align: center;
+    }
+    /* KONTAK */
+    .contact {
+      background: #1f3a1f;
+      color: #f7efd6;
+      border-radius: 40px 40px 25px 25px;
+      padding: 30px;
+      margin-top: 40px;
+    }
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-between;
+    }
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .contact-links a {
+      background: #334f33;
+      color: #ffefcf;
+      padding: 15px 30px;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.2rem;
+      border: 1px solid #c4944f;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .address {
+      background: #2f482f;
+      padding: 20px 30px;
+      border-radius: 60px;
+      border-left: 8px solid #ca9f5a;
+      max-width: 350px;
+    }
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.95);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal img {
+      max-width: 100%;
+      max-height: 90vh;
+      border-radius: 30px;
+      border: 5px solid white;
+    }
+    .modal-close {
+      position: absolute;
+      top: 30px; right: 40px;
+      color: white;
+      font-size: 5rem;
+      cursor: pointer;
+    }
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 30px; left: 50%;
+      transform: translateX(-50%);
+      background: #2d672d;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 60px;
+      font-weight: 600;
+      box-shadow: 0 10px 20px black;
+      display: none;
+      z-index: 99999;
+    }
+    /* RESPONSIF */
+    @media (max-width: 700px) {
+      .gallery { grid-template-columns: 1fr; }
+      .pricelist-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 1.8rem; }
+      .h1-light { font-size: 1.5rem; }
+    }
+  </style>
 </head>
 <body>
-  <div class="premium-container">
-    
-    <!-- header -->
-    <div class="header-flex">
-      <h1>Kalisengon <span class="h1-light">· riverside</span></h1>
-      <div class="chip-agenda"><i class="far fa-calendar-alt"></i> 14 – 15 Maret</div>
-    </div>
-    <div class="subhead">
-      <i class="fas fa-map-pin" style="color:#b48b54;"></i> Pinggir sungai, Pacet, Mojokerto
-      <span class="subhead-badge"><i class="fas fa-tree"></i> Camping ground & grill</span>
-    </div>
+  <div class="card">
+    <div class="inner">
+      
+      <!-- HEADER -->
+      <div class="header-row">
+        <h1>Kalisengon <span class="h1-light">· riverside</span></h1>
+        <div class="agenda"><i class="far fa-calendar-alt"></i> 14-15 Maret</div>
+      </div>
+      <div class="sub">
+        <span>📍 Pinggir sungai, Pacet, Mojokerto</span>
+        <span class="sub-badge">⛺ Camping & grill</span>
+      </div>
 
-    <!-- 3 GAMBAR PEMANDANGAN (view.jpg, view1.jpg, view2.jpg) -->
-    <div class="gallery-grid">
-      <div class="gallery-card" onclick="openModal(this)">
-        <img src="view.jpg" alt="Pemandangan Kalisengon 1" loading="lazy">
-      </div>
-      <div class="gallery-card" onclick="openModal(this)">
-        <img src="view1.jpg" alt="Pemandangan Kalisengon 2" loading="lazy">
-      </div>
-      <div class="gallery-card" onclick="openModal(this)">
-        <img src="view2.jpg" alt="Pemandangan Kalisengon 3" loading="lazy">
-      </div>
-    </div>
-
-    <!-- DUA GAMBAR PRICELIST (pricelist.jpg dan pricelist1.jpg) -->
-    <div class="pricelist-premium reveal">
-      <h2><i class="fas fa-receipt"></i> Pricelist & perlengkapan</h2>
-      <div class="pricelist-grid">
-        <div class="pricelist-image" onclick="openModal(this)">
-          <img src="pricelist.jpg" alt="Price list 1" loading="lazy">
+      <!-- 3 GAMBAR PEMANDANGAN -->
+      <div class="gallery">
+        <div class="gallery-item" onclick="bukaModal('view.jpg')">
+          <img src="view.jpg" alt="View 1" loading="lazy">
         </div>
-        <div class="pricelist-image" onclick="openModal(this)">
-          <img src="pricelist1.jpg" alt="Price list 2" loading="lazy">
+        <div class="gallery-item" onclick="bukaModal('view1.jpg')">
+          <img src="view1.jpg" alt="View 2" loading="lazy">
         </div>
-      </div>
-      <p class="pricelist-caption"><i class="fas fa-campground"></i> Tersedia paket grill + sewa tenda</p>
-    </div>
-
-    <!-- VIDEO TIKTOK + MAPS - DIPERBAIKI UNTUK ANDROID -->
-    <div class="media-split">
-      <div class="media-block reveal">
-        <h3><i class="fab fa-tiktok" style="color:#111;"></i> Suasana terbaru</h3>
-        <div class="tiktok-card">
-          <!-- thumbnail statis + link langsung (solusi untuk android) -->
-          <a href="https://www.tiktok.com/@kalisengon/video/7592598004150881544" target="_blank" rel="noopener noreferrer">
-            <div class="tiktok-thumb">
-              <img src="https://placehold.co/400x600/2a412a/white?text=TikTok+Kalisengon&font=inter" alt="Video TikTok Kalisengon">
-              <div class="play-button">
-                <i class="fas fa-play"></i>
-              </div>
-            </div>
-          </a>
-          <p class="media-link"><a href="https://www.tiktok.com/@kalisengon/video/7592598004150881544" target="_blank">tonton di TikTok →</a></p>
+        <div class="gallery-item" onclick="bukaModal('view2.jpg')">
+          <img src="view2.jpg" alt="View 3" loading="lazy">
         </div>
       </div>
 
-      <div class="media-block reveal">
-        <h3><i class="fas fa-map"></i> Lokasi tepat</h3>
+      <!-- 2 GAMBAR PRICELIST -->
+      <div class="pricelist-area">
+        <h2>💰 Pricelist</h2>
+        <div class="pricelist-grid">
+          <div class="pricelist-item" onclick="bukaModal('pricelist.jpg')">
+            <img src="pricelist.jpg" alt="Price 1" loading="lazy">
+          </div>
+          <div class="pricelist-item" onclick="bukaModal('pricelist1.jpg')">
+            <img src="pricelist1.jpg" alt="Price 2" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- TIKTOK (TANPA IFRAME, PASTI STABIL) -->
+      <div class="tiktok-card">
+        <h3 style="font-size:1.8rem; margin-bottom:15px;">📱 TikTok Kalisengon</h3>
+        <div class="tiktok-thumb">
+          <img src="https://placehold.co/400x600/1f3a1f/white?text=Kalisengon+TikTok" alt="TikTok video">
+        </div>
+        <a href="https://www.tiktok.com/@kalisengon/video/7592598004150881544" target="_blank" class="tiktok-btn">
+          ▶ TONTON DI TIKTOK
+        </a>
+      </div>
+
+      <!-- MAPS GOOGLE -->
+      <div class="maps-card">
+        <h3 style="font-size:1.8rem; margin-bottom:15px;">🗺️ Lokasi</h3>
         <div class="map-frame">
-          <!-- maps dengan loading="lazy" dan ukuran tetap -->
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.123!2d112.5290277!3d-7.6677921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78774f39ea7327%3A0xe0619f7adc5c3999!2sKalisengon%20Riverside%20Camping%20Ground%20%26%20Eatery!5e0!3m2!1sid!2sid!4v1711456789123!5m2!1sid!2sid" 
-                  loading="lazy" 
-                  title="Peta Kalisengon"
-                  sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.123!2d112.5290277!3d-7.6677921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78774f39ea7327%3A0xe0619f7adc5c3999!2sKalisengon%20Riverside%20Camping%20Ground%20%26%20Eatery!5e0!3m2!1sid!2sid!4v1711456789123!5m2!1sid!2sid" loading="lazy"></iframe>
         </div>
-        <p class="map-address">Sajen, Pacet, Mojokerto 61374</p>
-        <!-- link google maps untuk android -->
-        <p class="map-link">
-          <a href="https://maps.google.com/?q=Kalisengon+Riverside+Camping+Ground+%26+Eatery" target="_blank">
-            <i class="fas fa-directions"></i> Buka di Google Maps
-          </a>
-        </p>
+        <p style="margin:15px 0; text-align:center; font-weight:600;">Sajen, Pacet, Mojokerto 61374</p>
+        <a href="https://maps.google.com/?q=Kalisengon+Riverside+Camping+Ground+%26+Eatery" target="_blank" class="map-link">
+          🧭 BUKA GOOGLE MAPS
+        </a>
       </div>
-    </div>
 
-    <!-- ITINERARY -->
-    <div class="itinerary-header">
-      <h2><i class="fas fa-clock" style="color:#b27a44;"></i> Itinerary camping</h2>
-    </div>
-    <div class="itinerary-grid">
-      <div class="day-card reveal">
-        <h4>14 Maret <span class="day-emoji">⛅</span></h4>
-        <div class="schedule-item"><span class="schedule-time">15.00</span><span class="schedule-desc">OTW lokasi</span></div>
-        <div class="schedule-item"><span class="schedule-time">16.00</span><span class="schedule-desc">Check-in</span></div>
-        <div class="schedule-item"><span class="schedule-time">17.00</span><span class="schedule-desc">Masak & grill</span></div>
-        <div class="schedule-item"><span class="schedule-time">18.00</span><span class="schedule-desc">Buka puasa bersama</span></div>
-        <div class="schedule-item"><span class="schedule-time">19.00</span><span class="schedule-desc">Enjoy your time ✦</span></div>
+      <!-- ITINERARY -->
+      <h2 style="font-size:2rem; margin:40px 0 20px;">📅 Itinerary 14-15 Maret</h2>
+      <div class="itinerary-grid">
+        <div class="day-box">
+          <h3>14 Maret ⛅</h3>
+          <div class="schedule"><span class="time">15.00</span> OTW lokasi</div>
+          <div class="schedule"><span class="time">16.00</span> Check-in</div>
+          <div class="schedule"><span class="time">17.00</span> Masak & grill</div>
+          <div class="schedule"><span class="time">18.00</span> Buka puasa</div>
+          <div class="schedule"><span class="time">19.00</span> Enjoy your time ✦</div>
+        </div>
+        <div class="day-box">
+          <h3>15 Maret 🌄</h3>
+          <div class="schedule"><span class="time">08.00</span> Check-out & pulang</div>
+          <div style="margin-top:35px; background:#e6cfaa; border-radius:40px; padding:15px; text-align:center;">❤️ Sampai jumpa lagi</div>
+        </div>
       </div>
-      <div class="day-card reveal">
-        <h4>15 Maret <span class="day-emoji">🌄</span></h4>
-        <div class="schedule-item"><span class="schedule-time">08.00</span><span class="schedule-desc">Check-out & pulang</span></div>
-        <div class="day-note"><i class="fas fa-heart"></i> Sampai jumpa lagi</div>
-      </div>
-    </div>
 
-    <!-- KONTAK -->
-    <div class="contact-premium">
-      <div class="social-row">
-        <a href="https://www.instagram.com/kalisengon/" target="_blank"><i class="fab fa-instagram"></i> @kalisengon</a>
-        <a href="#" id="waBtn"><i class="fab fa-whatsapp"></i> Admin 0877-2582-6284 <span class="copy-badge">salin</span></a>
-        <a href="#"><i class="far fa-envelope"></i> kalisengon.river@mail.com</a>
+      <!-- KONTAK -->
+      <div class="contact">
+        <div class="contact-row">
+          <div class="contact-links">
+            <a href="https://www.instagram.com/kalisengon/" target="_blank">📷 @kalisengon</a>
+            <a href="#" id="waButton">📱 Admin 0877-2582-6284 <span style="background:#734d1a; padding:5px 12px; border-radius:40px;">salin</span></a>
+            <a href="#">✉️ kalisengon.river@mail.com</a>
+          </div>
+          <div class="address">
+            <strong>📍 Sajen, Pacet</strong><br>
+            Kab. Mojokerto, Jatim 61374<br>
+            <span style="font-size:0.9rem;">(pinggir sungai, parkir luas)</span>
+          </div>
+        </div>
       </div>
-      <div class="alamat-premium">
-        <i class="fas fa-location-dot" style="color:#dbaa6b;"></i> <strong>Sajen, Pacet</strong><br>
-        Kab. Mojokerto, Jawa Timur 61374<br>
-        <span class="alamat-keterangan">(pinggir sungai, parkir luas)</span>
-      </div>
-    </div>
-    <!-- footer -->
-    <div class="footer-note">
-      <i class="fas fa-campground"></i> Kalisengon · riverside camping ground
+      
+      <div style="text-align:center; margin-top:20px; color:#7e8f6b;">⛺ Kalisengon · riverside camping ground</div>
     </div>
   </div>
 
   <!-- MODAL LIGHTBOX -->
-  <div id="lightboxModal" class="modal" onclick="closeModal(event)">
-    <span class="close-modal">&times;</span>
-    <img class="modal-content" id="modalImage" src="" alt="preview">
+  <div id="modalGambar" class="modal" onclick="if(event.target==this) tutupModal()">
+    <span class="modal-close" onclick="tutupModal()">&times;</span>
+    <img id="modalImg" src="" alt="preview">
   </div>
 
-  <!-- TOAST NOTIFIKASI -->
-  <div id="copyToast" class="toast-msg">Nomor admin disalin! 087725826284</div>
+  <!-- TOAST NOTIF -->
+  <div id="toastCopy" class="toast">Nomor admin disalin!</div>
 
-  <!-- JavaScript terpisah -->
-  <script src="script.js"></script>
+  <script>
+    // FONT AWESOME (tambahkan icon)
+    var fa = document.createElement('link');
+    fa.rel = 'stylesheet';
+    fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css';
+    document.head.appendChild(fa);
+
+    // MODAL LIGHTBOX
+    function bukaModal(src) {
+      document.getElementById('modalImg').src = src;
+      document.getElementById('modalGambar').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function tutupModal() {
+      document.getElementById('modalGambar').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    // tekan ESC
+    document.addEventListener('keydown', function(e) {
+      if(e.key === 'Escape') tutupModal();
+    });
+
+    // COPY NOMOR
+    document.getElementById('waButton').addEventListener('click', function(e) {
+      e.preventDefault();
+      var nomor = '087725826284';
+      var toast = document.getElementById('toastCopy');
+      
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(nomor).then(function() {
+          toast.style.display = 'block';
+          setTimeout(function() { toast.style.display = 'none'; }, 2000);
+        }).catch(function() {
+          alert('Salin manual: ' + nomor);
+        });
+      } else {
+        // fallback
+        var textarea = document.createElement('textarea');
+        textarea.value = nomor;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        toast.style.display = 'block';
+        setTimeout(function() { toast.style.display = 'none'; }, 2000);
+      }
+    });
+
+    // PASTIKAN MAPS TIDAK KEDIP DI ANDROID
+    if (/Android/i.test(navigator.userAgent)) {
+      var iframe = document.querySelector('.map-frame iframe');
+      if (iframe) {
+        // reload sekali agar stabil
+        setTimeout(function() {
+          var src = iframe.src;
+          iframe.src = '';
+          iframe.src = src;
+        }, 300);
+      }
+    }
+  </script>
 </body>
 </html>
