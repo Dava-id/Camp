@@ -7,17 +7,15 @@
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* RESET & PREMIUM STYLE */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
     }
     
     body {
-      background: linear-gradient(145deg, #1e321e, #2a402a);
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: #1e2f1e;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       padding: 16px;
       min-height: 100vh;
       display: flex;
@@ -25,97 +23,87 @@
       justify-content: center;
     }
     
-    .premium-card {
-      max-width: 1200px;
+    .card {
+      max-width: 1100px;
       width: 100%;
       margin: 0 auto;
-      background: rgba(255, 252, 242, 0.98);
-      backdrop-filter: blur(10px);
-      border-radius: 50px 50px 40px 40px;
+      background: #fcf9f0;
+      border-radius: 40px 40px 30px 30px;
       overflow: hidden;
-      box-shadow: 0 30px 60px -15px #0a1f0a;
-      border: 2px solid #ecdcb8;
+      box-shadow: 0 25px 50px -10px #0f1f0f;
+      border: 2px solid #e5d6b0;
     }
     
     .container {
-      padding: 30px 28px;
+      padding: 28px 25px;
     }
     
-    /* header */
-    .header-flex {
+    /* Header */
+    .header-row {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
-      margin-bottom: 15px;
+      gap: 15px;
+      margin-bottom: 10px;
     }
     
     h1 {
-      font-size: clamp(2.2rem, 6vw, 3.2rem);
+      font-size: 2.5rem;
       font-weight: 800;
-      color: #1f511f;
-      letter-spacing: -1.5px;
+      color: #1b4f1b;
+      letter-spacing: -1px;
       line-height: 1.1;
     }
     
     .h1-light {
       font-weight: 300;
-      color: #b3874b;
+      color: #b38642;
     }
     
-    .agenda-chip {
-      background: #cd8740;
+    .agenda {
+      background: #cc813a;
       color: white;
-      padding: 12px 28px;
-      border-radius: 60px;
+      padding: 10px 25px;
+      border-radius: 50px;
       font-weight: 700;
-      font-size: 1.1rem;
-      box-shadow: 0 10px 20px -5px #a35d1a;
-      border: 2px solid #fad39c;
+      font-size: 1rem;
+      border: 2px solid #ffd792;
     }
     
-    .subhead {
+    .sub {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
-      gap: 12px;
-      color: #5f7148;
-      border-bottom: 2px solid #dfccaa;
-      padding-bottom: 20px;
+      gap: 10px;
+      color: #5b6e47;
+      border-bottom: 2px solid #dfcb9e;
+      padding-bottom: 18px;
       margin-bottom: 25px;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
     }
     
-    .subhead-badge {
-      background: #e9ddc0;
-      padding: 8px 24px;
-      border-radius: 60px;
+    .sub-badge {
+      background: #e7dbbc;
+      padding: 6px 20px;
+      border-radius: 40px;
       margin-left: auto;
-      font-weight: 500;
     }
     
-    /* GALERI 3 KOLOM PREMIUM */
-    .gallery-grid {
+    /* Galeri 3 kolom */
+    .gallery {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-      margin: 35px 0;
+      gap: 18px;
+      margin: 30px 0;
     }
     
     .gallery-item {
       border-radius: 30px;
       overflow: hidden;
-      box-shadow: 0 20px 35px -10px #2a472a;
+      box-shadow: 0 15px 25px -8px #2a472a;
       border: 4px solid white;
       aspect-ratio: 4/3;
       cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .gallery-item:hover {
-      transform: scale(1.02) translateY(-5px);
-      box-shadow: 0 25px 40px -8px #1b4d1b;
     }
     
     .gallery-item img {
@@ -125,239 +113,217 @@
       display: block;
     }
     
-    /* PRICELIST 2 KOLOM */
-    .pricelist-premium {
-      background: #f6f0e0;
-      border-radius: 60px;
-      padding: 35px 30px;
-      margin: 40px 0;
-      box-shadow: inset 0 2px 10px #fffbe6, 0 20px 30px -10px #576d4b;
+    /* Pricelist 2 kolom */
+    .price-area {
+      background: #f3ecda;
+      border-radius: 50px;
+      padding: 30px 25px;
+      margin: 35px 0;
     }
     
-    .pricelist-premium h2 {
-      font-size: 2.3rem;
-      color: #356835;
-      margin-bottom: 30px;
-      border-left: 12px solid #cd9f60;
-      padding-left: 25px;
+    .price-area h2 {
+      font-size: 2.2rem;
+      color: #2b622b;
+      margin-bottom: 25px;
+      border-left: 10px solid #ca9b57;
+      padding-left: 20px;
     }
     
-    .pricelist-grid {
+    .price-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 25px;
+      gap: 20px;
     }
     
-    .pricelist-item {
+    .price-item {
       border-radius: 35px;
       overflow: hidden;
       border: 5px solid white;
-      box-shadow: 0 20px 30px -8px #6d7d58;
+      box-shadow: 0 15px 25px -8px #667553;
       cursor: pointer;
-      transition: 0.3s;
     }
     
-    .pricelist-item:hover {
-      transform: scale(1.02);
-      box-shadow: 0 25px 40px -8px #3a5e3a;
-    }
-    
-    .pricelist-item img {
+    .price-item img {
       width: 100%;
       height: auto;
       display: block;
     }
     
-    /* VIDEO SECTION - MENGGUNAKAN VIEW.MP4 */
-    .video-section {
-      background: #e3e2cf;
-      border-radius: 55px;
-      padding: 35px 25px;
-      margin: 40px 0;
+    /* Link TikTok - simple tanpa embed */
+    .tiktok-link-section {
+      background: #e1e0cd;
+      border-radius: 50px;
+      padding: 30px 25px;
+      margin: 35px 0;
       text-align: center;
-      border: 2px solid #f0e3c4;
     }
     
-    .video-section h3 {
+    .tiktok-link-section h3 {
       font-size: 2rem;
-      color: #3b5a3b;
-      margin-bottom: 25px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
+      color: #2f562f;
+      margin-bottom: 20px;
     }
     
-    .video-wrapper {
-      max-width: 700px;
-      margin: 0 auto;
-      border-radius: 40px;
-      overflow: hidden;
-      box-shadow: 0 30px 40px -12px #1a2e1a;
-      border: 6px solid white;
+    .tiktok-button {
+      display: inline-block;
       background: #000;
+      color: white;
+      padding: 18px 45px;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.4rem;
+      border: 4px solid #ff2b2b;
+      box-shadow: 0 10px 20px -5px #3d3d3d;
+      transition: 0.2s;
     }
     
-    .video-wrapper video {
-      width: 100%;
-      height: auto;
-      display: block;
-      aspect-ratio: 16/9;
-      object-fit: cover;
+    .tiktok-button:hover {
+      background: #1a1a1a;
+      transform: scale(1.02);
     }
     
-    /* MAPS SECTION */
-    .maps-section {
-      background: #cdd6be;
-      border-radius: 55px;
-      padding: 35px 25px;
-      margin: 40px 0;
+    .tiktok-button i {
+      margin-right: 12px;
     }
     
-    .maps-section h3 {
+    /* Maps */
+    .maps-area {
+      background: #d1d9c2;
+      border-radius: 50px;
+      padding: 30px 25px;
+      margin: 35px 0;
+    }
+    
+    .maps-area h3 {
       font-size: 2rem;
-      color: #2b562b;
-      margin-bottom: 25px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      color: #296329;
+      margin-bottom: 20px;
     }
     
-    .map-embed {
-      border-radius: 40px;
+    .map-container {
+      border-radius: 35px;
       overflow: hidden;
-      border: 6px solid white;
-      box-shadow: 0 20px 35px -8px #2f462f;
-      height: 320px;
+      border: 5px solid white;
+      height: 280px;
+      box-shadow: 0 15px 25px -8px #3a553a;
     }
     
-    .map-embed iframe {
+    .map-container iframe {
       width: 100%;
       height: 100%;
       border: 0;
     }
     
-    .map-alt-link {
+    .map-button {
       display: block;
-      background: #366836;
+      background: #2f662f;
       color: white;
       text-align: center;
-      padding: 16px;
+      padding: 15px;
       border-radius: 60px;
       text-decoration: none;
       font-weight: 600;
       margin-top: 20px;
-      font-size: 1.1rem;
-      transition: background 0.3s;
+      font-size: 1.2rem;
     }
     
-    .map-alt-link:hover {
-      background: #cd8740;
-    }
-    
-    /* ITINERARY */
-    .itinerary-grid {
+    /* Itinerary */
+    .itinerary {
       display: flex;
-      gap: 25px;
+      gap: 20px;
       flex-wrap: wrap;
-      margin: 35px 0;
+      margin: 30px 0;
     }
     
-    .day-card {
-      flex: 1 1 260px;
-      background: #fff8ea;
-      border-radius: 45px;
-      padding: 28px;
-      box-shadow: 0 20px 35px -12px #9a8d6f;
+    .day {
+      flex: 1 1 250px;
+      background: #fff7e8;
+      border-radius: 40px;
+      padding: 25px;
+      box-shadow: 0 15px 25px -8px #9f906f;
     }
     
-    .day-card h4 {
-      font-size: 2.3rem;
-      color: #866b3c;
-      margin-bottom: 25px;
+    .day h4 {
+      font-size: 2.2rem;
+      color: #7b623a;
+      margin-bottom: 20px;
     }
     
-    .schedule-row {
+    .time-row {
       display: flex;
       align-items: baseline;
-      gap: 15px;
-      margin: 18px 0;
+      gap: 12px;
+      margin: 15px 0;
       flex-wrap: wrap;
     }
     
-    .time-badge {
-      background: #4b724b;
+    .time {
+      background: #427242;
       color: white;
-      padding: 6px 18px;
-      border-radius: 50px;
+      padding: 5px 15px;
+      border-radius: 40px;
       font-weight: 700;
-      min-width: 80px;
+      min-width: 75px;
       text-align: center;
     }
     
-    /* KONTAK */
-    .contact-premium {
-      background: #1f3a1f;
-      color: #fff7e2;
-      border-radius: 50px 50px 30px 30px;
-      padding: 35px;
-      margin-top: 40px;
+    /* Contact */
+    .contact {
+      background: #1c341c;
+      color: #fcf3da;
+      border-radius: 45px 45px 25px 25px;
+      padding: 30px;
+      margin-top: 35px;
     }
     
-    .contact-flex {
+    .contact-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 30px;
+      gap: 25px;
       justify-content: space-between;
     }
     
-    .social-links {
+    .contact-links {
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 15px;
     }
     
-    .social-links a {
-      background: #2d4d2d;
+    .contact-links a {
+      background: #2a4b2a;
       color: #ffefcf;
-      padding: 16px 32px;
-      border-radius: 60px;
+      padding: 14px 30px;
+      border-radius: 50px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 1.2rem;
-      border: 2px solid #c69148;
+      font-size: 1.1rem;
+      border: 2px solid #c28f47;
       display: inline-flex;
       align-items: center;
-      gap: 15px;
-      transition: 0.2s;
+      gap: 12px;
     }
     
-    .social-links a:hover {
-      background: #c69148;
-      color: #1d2e1a;
+    .alamat {
+      background: #244124;
+      padding: 20px 30px;
+      border-radius: 50px;
+      border-left: 8px solid #cb9b54;
+      max-width: 350px;
     }
     
-    .address-block {
-      background: #2a462a;
-      padding: 25px 35px;
-      border-radius: 60px;
-      border-left: 8px solid #cf9d57;
-      max-width: 380px;
-    }
-    
-    .footer-note {
+    .footer {
       text-align: center;
-      margin-top: 25px;
-      color: #6a8262;
+      margin-top: 20px;
+      color: #708567;
     }
     
-    /* MODAL LIGHTBOX */
+    /* Modal lightbox */
     .modal {
       display: none;
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 20, 0, 0.97);
-      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.95);
       z-index: 9999;
       align-items: center;
       justify-content: center;
@@ -367,73 +333,56 @@
     .modal img {
       max-width: 95vw;
       max-height: 90vh;
-      border-radius: 40px;
-      border: 6px solid white;
+      border-radius: 30px;
+      border: 5px solid white;
     }
     
     .modal-close {
       position: absolute;
       top: 25px; right: 35px;
       color: white;
-      font-size: 5rem;
+      font-size: 4rem;
       cursor: pointer;
-      font-weight: 300;
-      line-height: 1;
-      z-index: 10000;
     }
     
-    /* TOAST */
-    .toast-msg {
+    /* Toast */
+    .toast {
       position: fixed;
       bottom: 30px; left: 50%;
       transform: translateX(-50%);
-      background: #2c682c;
+      background: #2d6b2d;
       color: white;
-      padding: 16px 35px;
+      padding: 15px 30px;
       border-radius: 60px;
       font-weight: 600;
-      box-shadow: 0 10px 30px black;
-      z-index: 99999;
       display: none;
+      z-index: 99999;
     }
     
-    /* VIDEO CONTROLS CUSTOM */
-    video {
-      width: 100%;
-      height: auto;
-    }
-    
-    /* RESPONSIF */
-    @media (max-width: 800px) {
-      .gallery-grid { grid-template-columns: 1fr; }
-      .pricelist-grid { grid-template-columns: 1fr; }
-      .container { padding: 20px; }
-    }
-    
-    @media (max-width: 500px) {
-      .agenda-chip { padding: 8px 18px; font-size: 0.9rem; }
-      .subhead-badge { padding: 5px 15px; }
-      .day-card h4 { font-size: 2rem; }
-      .modal-close { font-size: 4rem; top: 15px; right: 20px; }
+    /* Responsif */
+    @media (max-width: 700px) {
+      .gallery { grid-template-columns: 1fr; }
+      .price-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
-  <div class="premium-card">
+  <div class="card">
     <div class="container">
       
       <!-- HEADER -->
-      <div class="header-flex">
+      <div class="header-row">
         <h1>Kalisengon <span class="h1-light">· riverside</span></h1>
-        <div class="agenda-chip"><i class="far fa-calendar-alt"></i> 14–15 Maret</div>
+        <div class="agenda"><i class="far fa-calendar-alt"></i> 14-15 Maret</div>
       </div>
-      <div class="subhead">
+      <div class="sub">
         <span><i class="fas fa-map-pin" style="color:#b27d44;"></i> Pinggir sungai, Pacet, Mojokerto</span>
-        <span class="subhead-badge"><i class="fas fa-tree"></i> Camping ground & grill</span>
+        <span class="sub-badge"><i class="fas fa-tree"></i> Camping & grill</span>
       </div>
 
-      <!-- 3 GAMBAR PEMANDANGAN -->
-      <div class="gallery-grid">
+      <!-- 3 GAMBAR PEMANDANGAN (view.jpg, view1.jpg, view2.jpg) -->
+      <div class="gallery">
         <div class="gallery-item" onclick="openModal('view.jpg')">
           <img src="view.jpg" alt="Pemandangan 1" loading="lazy">
         </div>
@@ -445,111 +394,106 @@
         </div>
       </div>
 
-      <!-- 2 GAMBAR PRICELIST -->
-      <div class="pricelist-premium">
+      <!-- 2 GAMBAR PRICELIST (pricelist.jpg, pricelist1.jpg) -->
+      <div class="price-area">
         <h2><i class="fas fa-tag"></i> Pricelist</h2>
-        <div class="pricelist-grid">
-          <div class="pricelist-item" onclick="openModal('pricelist.jpg')">
+        <div class="price-grid">
+          <div class="price-item" onclick="openModal('pricelist.jpg')">
             <img src="pricelist.jpg" alt="Price list 1" loading="lazy">
           </div>
-          <div class="pricelist-item" onclick="openModal('pricelist1.jpg')">
+          <div class="price-item" onclick="openModal('pricelist1.jpg')">
             <img src="pricelist1.jpg" alt="Price list 2" loading="lazy">
           </div>
         </div>
       </div>
 
-      <!-- VIDEO VIEW.MP4 -->
-      <div class="video-section">
-        <h3><i class="fas fa-video"></i> Video Pemandangan</h3>
-        <div class="video-wrapper">
-          <video controls playsinline poster="view.jpg">
-            <source src="view.mp4" type="video/mp4">
-            Browser Anda tidak mendukung tag video. 
-            <a href="view.mp4" download>Download video</a>
-          </video>
-        </div>
-        <p style="margin-top: 18px; color: #4f613f;">
-          <i class="fas fa-phone-alt"></i> Suasana asri pinggir sungai
+      <!-- LINK TIKTOK (TANPA VIDEO, HANYA LINK) -->
+      <div class="tiktok-link-section">
+        <h3><i class="fab fa-tiktok"></i> TikTok Kalisengon</h3>
+        <a href="https://www.tiktok.com/@kalisengon/video/7592598004150881544" target="_blank" class="tiktok-button">
+          <i class="fab fa-tiktok"></i> @kalisengon
+        </a>
+        <p style="margin-top: 18px; color: #4e613c;">
+          <i class="fas fa-play"></i> Klik tombol di atas untuk melihat video di TikTok
         </p>
       </div>
 
-      <!-- MAPS GOOGLE -->
-      <div class="maps-section">
-        <h3><i class="fas fa-map-location-dot"></i> Lokasi Kalisengon</h3>
-        <div class="map-embed">
+      <!-- MAPS -->
+      <div class="maps-area">
+        <h3><i class="fas fa-map-location-dot"></i> Lokasi</h3>
+        <div class="map-container">
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.123!2d112.5290277!3d-7.6677921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78774f39ea7327%3A0xe0619f7adc5c3999!2sKalisengon%20Riverside%20Camping%20Ground%20%26%20Eatery!5e0!3m2!1sid!2sid!4v1711456789123!5m2!1sid!2sid" 
-                  loading="lazy"
-                  title="Peta Kalisengon"></iframe>
+                  loading="lazy"></iframe>
         </div>
-        <a href="https://maps.google.com/?q=Kalisengon+Riverside+Camping+Ground+%26+Eatery" target="_blank" class="map-alt-link">
-          <i class="fas fa-directions"></i> BUKA DI APLIKASI MAPS
+        <a href="https://maps.google.com/?q=Kalisengon+Riverside+Camping+Ground+%26+Eatery" target="_blank" class="map-button">
+          <i class="fas fa-directions"></i> Buka di Google Maps
         </a>
-        <p style="text-align:center; margin-top:15px; font-weight:600;">
-          <i class="fas fa-location-dot"></i> Sajen, Pacet, Mojokerto 61374
+        <p style="text-align:center; margin-top:15px; font-weight:500;">
+          Sajen, Pacet, Mojokerto 61374
         </p>
       </div>
 
       <!-- ITINERARY -->
-      <h2 style="font-size:2.2rem; margin:40px 0 25px;"><i class="fas fa-clock" style="color:#b67c40;"></i> Itinerary</h2>
-      <div class="itinerary-grid">
-        <div class="day-card">
-          <h4>14 Maret <span style="font-size:1.8rem;">⛅</span></h4>
-          <div class="schedule-row"><span class="time-badge">15.00</span> OTW lokasi</div>
-          <div class="schedule-row"><span class="time-badge">16.00</span> Check-in</div>
-          <div class="schedule-row"><span class="time-badge">17.00</span> Masak & grill</div>
-          <div class="schedule-row"><span class="time-badge">18.00</span> Buka puasa</div>
-          <div class="schedule-row"><span class="time-badge">19.00</span> Enjoy your time ✦</div>
+      <h2 style="font-size:2.2rem; margin:40px 0 20px;"><i class="fas fa-clock" style="color:#b67c40;"></i> Itinerary</h2>
+      <div class="itinerary">
+        <div class="day">
+          <h4>14 Maret ⛅</h4>
+          <div class="time-row"><span class="time">15.00</span> OTW lokasi</div>
+          <div class="time-row"><span class="time">16.00</span> Check-in</div>
+          <div class="time-row"><span class="time">17.00</span> Masak & grill</div>
+          <div class="time-row"><span class="time">18.00</span> Buka puasa</div>
+          <div class="time-row"><span class="time">19.00</span> Enjoy your time ✦</div>
         </div>
-        <div class="day-card">
-          <h4>15 Maret <span style="font-size:1.8rem;">🌄</span></h4>
-          <div class="schedule-row"><span class="time-badge">08.00</span> Check-out & pulang</div>
-          <div style="margin-top:40px; background:#ebddc0; border-radius:40px; padding:15px; text-align:center;">
+        <div class="day">
+          <h4>15 Maret 🌄</h4>
+          <div class="time-row"><span class="time">08.00</span> Check-out & pulang</div>
+          <div style="margin-top:35px; background:#eadaba; border-radius:40px; padding:15px; text-align:center;">
             <i class="fas fa-heart" style="color:#aa4f4f;"></i> Sampai jumpa lagi
           </div>
         </div>
       </div>
 
       <!-- KONTAK -->
-      <div class="contact-premium">
-        <div class="contact-flex">
-          <div class="social-links">
+      <div class="contact">
+        <div class="contact-row">
+          <div class="contact-links">
             <a href="https://www.instagram.com/kalisengon/" target="_blank"><i class="fab fa-instagram"></i> @kalisengon</a>
-            <a href="#" id="waCopyBtn"><i class="fab fa-whatsapp"></i> Admin 0877-2582-6284 <span style="background:#6a4d1e; padding:5px 14px; border-radius:40px;">salin</span></a>
+            <a href="#" id="waBtn"><i class="fab fa-whatsapp"></i> Admin 0877-2582-6284 <span style="background:#6d4f1f; padding:4px 12px; border-radius:40px;">salin</span></a>
             <a href="#"><i class="far fa-envelope"></i> kalisengon.river@mail.com</a>
           </div>
-          <div class="address-block">
+          <div class="alamat">
             <i class="fas fa-location-dot" style="color:#dba35b;"></i> <strong>Sajen, Pacet</strong><br>
             Kab. Mojokerto, Jawa Timur 61374<br>
-            <span style="font-size:0.95rem;">(pinggir sungai, parkir luas)</span>
+            <span style="font-size:0.9rem;">(pinggir sungai, parkir luas)</span>
           </div>
         </div>
       </div>
       
-      <div class="footer-note">
+      <div class="footer">
         <i class="fas fa-campground"></i> Kalisengon · riverside camping ground
       </div>
     </div>
   </div>
 
   <!-- MODAL LIGHTBOX -->
-  <div id="imageModal" class="modal" onclick="if(event.target==this) closeModal()">
+  <div id="modal" class="modal" onclick="if(event.target==this) closeModal()">
     <span class="modal-close" onclick="closeModal()">&times;</span>
-    <img id="modalImage" src="" alt="preview">
+    <img id="modalImg" src="" alt="">
   </div>
 
-  <!-- TOAST NOTIFICATION -->
-  <div id="copyToast" class="toast-msg">Nomor admin disalin!</div>
+  <!-- TOAST -->
+  <div id="toast" class="toast">Nomor admin disalin!</div>
 
   <script>
-    // ========== LIGHTBOX ==========
+    // LIGHTBOX
     function openModal(src) {
-      document.getElementById('modalImage').src = src;
-      document.getElementById('imageModal').style.display = 'flex';
+      document.getElementById('modalImg').src = src;
+      document.getElementById('modal').style.display = 'flex';
       document.body.style.overflow = 'hidden';
     }
     
     function closeModal() {
-      document.getElementById('imageModal').style.display = 'none';
+      document.getElementById('modal').style.display = 'none';
       document.body.style.overflow = '';
     }
     
@@ -557,59 +501,32 @@
       if(e.key === 'Escape') closeModal();
     });
 
-    // ========== COPY NOMOR ==========
-    document.getElementById('waCopyBtn').addEventListener('click', function(e) {
+    // COPY NOMOR
+    document.getElementById('waBtn').addEventListener('click', function(e) {
       e.preventDefault();
       const nomor = '087725826284';
-      const toast = document.getElementById('copyToast');
+      const toast = document.getElementById('toast');
       
-      function showToastMsg() {
-        toast.style.display = 'block';
-        setTimeout(() => { toast.style.display = 'none'; }, 2000);
-      }
-      
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(nomor).then(showToastMsg).catch(() => {
-          fallbackCopy(nomor);
+      // Copy ke clipboard
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(nomor).then(function() {
+          toast.style.display = 'block';
+          setTimeout(() => { toast.style.display = 'none'; }, 2000);
+        }).catch(function() {
+          alert('Salin manual: ' + nomor);
         });
       } else {
-        fallbackCopy(nomor);
-      }
-      
-      function fallbackCopy(text) {
+        // Fallback
         const textarea = document.createElement('textarea');
-        textarea.value = text;
+        textarea.value = nomor;
         document.body.appendChild(textarea);
         textarea.select();
         document.execCommand('copy');
         document.body.removeChild(textarea);
-        showToastMsg();
+        toast.style.display = 'block';
+        setTimeout(() => { toast.style.display = 'none'; }, 2000);
       }
     });
-
-    // ========== OPTIMASI VIDEO UNTUK ANDROID ==========
-    const video = document.querySelector('video');
-    if (video) {
-      // Pastikan video bisa diputar di Android
-      video.setAttribute('playsinline', '');
-      video.setAttribute('webkit-playsinline', '');
-      
-      // Preload metadata agar cepat
-      video.preload = 'metadata';
-    }
-
-    // ========== OPTIMASI MAPS UNTUK ANDROID ==========
-    if (/Android/i.test(navigator.userAgent)) {
-      const mapIframe = document.querySelector('.map-embed iframe');
-      if (mapIframe) {
-        // Refresh maps sekali agar tidak putih
-        setTimeout(() => {
-          const src = mapIframe.src;
-          mapIframe.src = '';
-          mapIframe.src = src;
-        }, 500);
-      }
-    }
   </script>
 </body>
 </html>
