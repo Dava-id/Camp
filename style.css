@@ -3,7 +3,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent; /* hilangkan highlight sentuh di mobile */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -112,6 +114,7 @@ h1 {
   height: 100%;
   object-fit: cover;
   display: block;
+  pointer-events: none; /* mencegah drag di android */
 }
 
 .gallery-card::after {
@@ -180,12 +183,67 @@ h1 {
   width: 100%;
   height: auto;
   display: block;
+  pointer-events: none;
 }
 
 .pricelist-caption {
   text-align: center;
   margin-top: 1.2rem;
   color: #4d613f;
+}
+
+/* TIKTOK CARD (perbaikan untuk android) */
+.tiktok-card {
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.tiktok-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 25px 30px -12px black;
+  cursor: pointer;
+  border: 3px solid white;
+}
+
+.tiktok-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.tiktok-thumb:hover img {
+  transform: scale(1.05);
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.8rem;
+  border: 3px solid rgba(255,255,255,0.5);
+  backdrop-filter: blur(4px);
+  transition: all 0.3s;
+}
+
+.tiktok-thumb:hover .play-button {
+  background: #cfa263;
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
 /* media row (video + maps) */
@@ -202,6 +260,8 @@ h1 {
   border-radius: 3rem;
   padding: 1.8rem 1.8rem 2rem;
   box-shadow: 0 15px 24px -8px rgba(70, 65, 40, 0.2);
+  transform: translateZ(0); /* memperbaiki rendering android */
+  backface-visibility: hidden;
 }
 
 .media-block h3 {
@@ -215,23 +275,6 @@ h1 {
   padding-bottom: 0.8rem;
 }
 
-.tiktok-frame {
-  position: relative;
-  width: 100%;
-  max-width: 340px;
-  margin: 0 auto;
-  aspect-ratio: 9 / 16;
-  border-radius: 2rem;
-  overflow: hidden;
-  box-shadow: 0 25px 30px -12px black;
-}
-
-.tiktok-frame iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
 .media-link {
   margin-top: 1rem;
   text-align: center;
@@ -240,11 +283,14 @@ h1 {
   color: #7c6b4b;
   text-decoration: none;
   font-weight: 500;
+  padding: 8px 16px;
+  display: inline-block;
 }
 .media-link a:hover {
   text-decoration: underline;
 }
 
+/* MAPS - diperbaiki untuk android */
 .map-frame {
   width: 100%;
   height: 280px;
@@ -252,18 +298,40 @@ h1 {
   overflow: hidden;
   box-shadow: 0 12px 25px -10px #384e2e;
   border: 3px solid #fffaf0;
+  background: #e8e8e0; /* warna background saat loading */
 }
 
 .map-frame iframe {
   width: 100%;
   height: 100%;
   border: 0;
+  display: block;
 }
 
 .map-address {
   margin-top: 1rem;
   text-align: center;
   color: #4d613f;
+}
+
+.map-link {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.map-link a {
+  display: inline-block;
+  background: #5c7c5c;
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.map-link a:hover {
+  background: #cfa263;
 }
 
 /* itinerary premium */
@@ -376,7 +444,7 @@ h1 {
   transition: background 0.25s, color 0.25s;
   font-size: 1.1rem;
   cursor: pointer;
-  min-height: 44px; /* ukuran sentuh nyaman */
+  min-height: 48px;
 }
 
 .social-row a:hover {
@@ -421,7 +489,7 @@ h1 {
   z-index: 9999;
   left: 0; top: 0;
   width: 100%; height: 100%;
-  background-color: rgba(10, 20, 8, 0.9);
+  background-color: rgba(10, 20, 8, 0.95);
   backdrop-filter: blur(12px);
   align-items: center;
   justify-content: center;
@@ -447,7 +515,7 @@ h1 {
   transition: color 0.2s;
   line-height: 1;
   z-index: 10000;
-  padding: 0 10px; /* area sentuh lebih besar */
+  padding: 0 10px;
 }
 
 .close-modal:hover {
@@ -511,8 +579,9 @@ h1 {
   .media-split {
     flex-direction: column;
   }
-  .tiktok-frame {
+  .tiktok-thumb {
     max-width: 280px;
+    margin: 0 auto;
   }
   .contact-premium {
     flex-direction: column;
@@ -545,13 +614,21 @@ h1 {
   }
 }
 
-/* perbaikan untuk layar sangat kecil */
-@media (max-width: 360px) {
-  .social-row a {
-    font-size: 1rem;
-    padding: 0.6rem 1.2rem;
+/* perbaikan untuk android */
+@media (hover: none) and (pointer: coarse) {
+  /* gaya untuk sentuhan */
+  .gallery-card::after {
+    opacity: 1; /* selalu tampil di mobile */
+    background: rgba(255,255,240,0.9);
   }
-  .alamat-premium {
-    padding: 1rem;
+  
+  .social-row a {
+    padding: 1rem 2rem; /* area sentuh lebih besar */
+  }
+  
+  .play-button {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
   }
 }
