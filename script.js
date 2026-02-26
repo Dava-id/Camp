@@ -1,142 +1,123 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <meta name="description" content="Kalisengon Riverside Camping Ground & Grill di Pacet, Mojokerto. Nikmati camping pinggir sungai dengan pemandangan indah.">
-  <title>Kalisengon · Riverside Camping</title>
-  <!-- Font & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- CSS terpisah -->
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="premium-container">
-    
-    <!-- header -->
-    <div class="header-flex">
-      <h1>Kalisengon <span class="h1-light">· riverside</span></h1>
-      <div class="chip-agenda"><i class="far fa-calendar-alt"></i> 14 – 15 Maret</div>
-    </div>
-    <div class="subhead">
-      <i class="fas fa-map-pin" style="color:#b48b54;"></i> Pinggir sungai, Pacet, Mojokerto
-      <span class="subhead-badge"><i class="fas fa-tree"></i> Camping ground & grill</span>
-    </div>
+// LIGHTBOX INTERAKTIF
+const modal = document.getElementById('lightboxModal');
+const modalImg = document.getElementById('modalImage');
 
-    <!-- 3 GAMBAR PEMANDANGAN (view.jpg, view1.jpg, view2.jpg) -->
-    <div class="gallery-grid">
-      <div class="gallery-card" onclick="openModal(this)">
-        <img src="view.jpg" alt="Pemandangan Kalisengon 1" loading="lazy">
-      </div>
-      <div class="gallery-card" onclick="openModal(this)">
-        <img src="view1.jpg" alt="Pemandangan Kalisengon 2" loading="lazy">
-      </div>
-      <div class="gallery-card" onclick="openModal(this)">
-        <img src="view2.jpg" alt="Pemandangan Kalisengon 3" loading="lazy">
-      </div>
-    </div>
+window.openModal = function(element) {
+  const img = element.querySelector('img');
+  if (img) {
+    modal.style.display = 'flex';
+    modalImg.src = img.src;
+    document.body.style.overflow = 'hidden';
+    // mencegah scroll di belakang modal di android
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+  }
+}
 
-    <!-- DUA GAMBAR PRICELIST (pricelist.jpg dan pricelist1.jpg) -->
-    <div class="pricelist-premium reveal">
-      <h2><i class="fas fa-receipt"></i> Pricelist & perlengkapan</h2>
-      <div class="pricelist-grid">
-        <div class="pricelist-image" onclick="openModal(this)">
-          <img src="pricelist.jpg" alt="Price list 1" loading="lazy">
-        </div>
-        <div class="pricelist-image" onclick="openModal(this)">
-          <img src="pricelist1.jpg" alt="Price list 2" loading="lazy">
-        </div>
-      </div>
-      <p class="pricelist-caption"><i class="fas fa-campground"></i> Tersedia paket grill + sewa tenda</p>
-    </div>
+window.closeModal = function(event) {
+  if (event.target === modal || event.target.classList.contains('close-modal')) {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+  }
+}
 
-    <!-- VIDEO TIKTOK + MAPS - DIPERBAIKI UNTUK ANDROID -->
-    <div class="media-split">
-      <div class="media-block reveal">
-        <h3><i class="fab fa-tiktok" style="color:#111;"></i> Suasana terbaru</h3>
-        <div class="tiktok-card">
-          <!-- thumbnail statis + link langsung (solusi untuk android) -->
-          <a href="https://www.tiktok.com/@kalisengon/video/7592598004150881544" target="_blank" rel="noopener noreferrer">
-            <div class="tiktok-thumb">
-              <img src="https://placehold.co/400x600/2a412a/white?text=TikTok+Kalisengon&font=inter" alt="Video TikTok Kalisengon">
-              <div class="play-button">
-                <i class="fas fa-play"></i>
-              </div>
-            </div>
-          </a>
-          <p class="media-link"><a href="https://www.tiktok.com/@kalisengon/video/7592598004150881544" target="_blank">tonton di TikTok →</a></p>
-        </div>
-      </div>
+// Tutup modal dengan tombol ESC
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && modal.style.display === 'flex') {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
+  }
+});
 
-      <div class="media-block reveal">
-        <h3><i class="fas fa-map"></i> Lokasi tepat</h3>
-        <div class="map-frame">
-          <!-- maps dengan loading="lazy" dan ukuran tetap -->
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.123!2d112.5290277!3d-7.6677921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78774f39ea7327%3A0xe0619f7adc5c3999!2sKalisengon%20Riverside%20Camping%20Ground%20%26%20Eatery!5e0!3m2!1sid!2sid!4v1711456789123!5m2!1sid!2sid" 
-                  loading="lazy" 
-                  title="Peta Kalisengon"
-                  sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
-        </div>
-        <p class="map-address">Sajen, Pacet, Mojokerto 61374</p>
-        <!-- link google maps untuk android -->
-        <p class="map-link">
-          <a href="https://maps.google.com/?q=Kalisengon+Riverside+Camping+Ground+%26+Eatery" target="_blank">
-            <i class="fas fa-directions"></i> Buka di Google Maps
-          </a>
-        </p>
-      </div>
-    </div>
+// COPY NOMOR ADMIN (dengan fallback untuk android)
+const waBtn = document.getElementById('waBtn');
+const toast = document.getElementById('copyToast');
 
-    <!-- ITINERARY -->
-    <div class="itinerary-header">
-      <h2><i class="fas fa-clock" style="color:#b27a44;"></i> Itinerary camping</h2>
-    </div>
-    <div class="itinerary-grid">
-      <div class="day-card reveal">
-        <h4>14 Maret <span class="day-emoji">⛅</span></h4>
-        <div class="schedule-item"><span class="schedule-time">15.00</span><span class="schedule-desc">OTW lokasi</span></div>
-        <div class="schedule-item"><span class="schedule-time">16.00</span><span class="schedule-desc">Check-in</span></div>
-        <div class="schedule-item"><span class="schedule-time">17.00</span><span class="schedule-desc">Masak & grill</span></div>
-        <div class="schedule-item"><span class="schedule-time">18.00</span><span class="schedule-desc">Buka puasa bersama</span></div>
-        <div class="schedule-item"><span class="schedule-time">19.00</span><span class="schedule-desc">Enjoy your time ✦</span></div>
-      </div>
-      <div class="day-card reveal">
-        <h4>15 Maret <span class="day-emoji">🌄</span></h4>
-        <div class="schedule-item"><span class="schedule-time">08.00</span><span class="schedule-desc">Check-out & pulang</span></div>
-        <div class="day-note"><i class="fas fa-heart"></i> Sampai jumpa lagi</div>
-      </div>
-    </div>
+waBtn.addEventListener('click', function(e) {
+  e.preventDefault();
+  const nomor = '087725826284';
+  
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(nomor).then(() => {
+      showToast();
+    }).catch(() => {
+      fallbackCopy(nomor);
+    });
+  } else {
+    fallbackCopy(nomor);
+  }
+});
 
-    <!-- KONTAK -->
-    <div class="contact-premium">
-      <div class="social-row">
-        <a href="https://www.instagram.com/kalisengon/" target="_blank"><i class="fab fa-instagram"></i> @kalisengon</a>
-        <a href="#" id="waBtn"><i class="fab fa-whatsapp"></i> Admin 0877-2582-6284 <span class="copy-badge">salin</span></a>
-        <a href="#"><i class="far fa-envelope"></i> kalisengon.river@mail.com</a>
-      </div>
-      <div class="alamat-premium">
-        <i class="fas fa-location-dot" style="color:#dbaa6b;"></i> <strong>Sajen, Pacet</strong><br>
-        Kab. Mojokerto, Jawa Timur 61374<br>
-        <span class="alamat-keterangan">(pinggir sungai, parkir luas)</span>
-      </div>
-    </div>
-    <!-- footer -->
-    <div class="footer-note">
-      <i class="fas fa-campground"></i> Kalisengon · riverside camping ground
-    </div>
-  </div>
+function fallbackCopy(text) {
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.select();
+  textarea.setSelectionRange(0, 99999);
+  
+  try {
+    document.execCommand('copy');
+    showToast();
+  } catch (err) {
+    alert('Gagal menyalin, silakan salin manual: ' + text);
+  }
+  
+  document.body.removeChild(textarea);
+}
 
-  <!-- MODAL LIGHTBOX -->
-  <div id="lightboxModal" class="modal" onclick="closeModal(event)">
-    <span class="close-modal">&times;</span>
-    <img class="modal-content" id="modalImage" src="" alt="preview">
-  </div>
+function showToast() {
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2000);
+}
 
-  <!-- TOAST NOTIFIKASI -->
-  <div id="copyToast" class="toast-msg">Nomor admin disalin! 087725826284</div>
+// SCROLL REVEAL (dioptimasi untuk performa)
+const revealElements = document.querySelectorAll('.reveal');
 
-  <!-- JavaScript terpisah -->
-  <script src="script.js"></script>
-</body>
-</html>
+function checkReveal() {
+  const windowHeight = window.innerHeight;
+  revealElements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < windowHeight - 100) {
+      el.classList.add('active');
+    }
+  });
+}
+
+// throttle dengan requestAnimationFrame
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      checkReveal();
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+
+window.addEventListener('load', checkReveal);
+window.addEventListener('resize', checkReveal);
+setTimeout(checkReveal, 100);
+
+// Deteksi perangkat android untuk penyesuaian
+const isAndroid = /Android/i.test(navigator.userAgent);
+if (isAndroid) {
+  document.body.classList.add('android-device');
+  
+  // perbaikan untuk iframe maps di android
+  const mapIframe = document.querySelector('.map-frame iframe');
+  if (mapIframe) {
+    // refresh iframe untuk android
+    setTimeout(() => {
+      const src = mapIframe.src;
+      mapIframe.src = '';
+      mapIframe.src = src;
+    }, 500);
+  }
+}
