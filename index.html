@@ -18,7 +18,7 @@
     body {
       background: linear-gradient(145deg, #1e321e, #2a402a);
       font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-      padding: 15px;
+      padding: 16px;
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -29,12 +29,12 @@
       max-width: 1200px;
       width: 100%;
       margin: 0 auto;
-      background: rgba(255, 251, 240, 0.95);
+      background: rgba(255, 252, 242, 0.98);
       backdrop-filter: blur(10px);
       border-radius: 50px 50px 40px 40px;
       overflow: hidden;
-      box-shadow: 0 30px 60px -15px #0f1f0f;
-      border: 2px solid #e9dbbc;
+      box-shadow: 0 30px 60px -15px #0a1f0a;
+      border: 2px solid #ecdcb8;
     }
     
     .container {
@@ -168,7 +168,7 @@
       display: block;
     }
     
-    /* VIDEO SECTION - TIKTOK IFRAME LANGSUNG */
+    /* VIDEO SECTION - MENGGUNAKAN VIEW.MP4 */
     .video-section {
       background: #e3e2cf;
       border-radius: 55px;
@@ -188,8 +188,8 @@
       gap: 12px;
     }
     
-    .tiktok-embed-wrapper {
-      max-width: 380px;
+    .video-wrapper {
+      max-width: 700px;
       margin: 0 auto;
       border-radius: 40px;
       overflow: hidden;
@@ -198,29 +198,12 @@
       background: #000;
     }
     
-    .tiktok-embed-wrapper iframe {
+    .video-wrapper video {
       width: 100%;
-      height: 620px;
+      height: auto;
       display: block;
-      border: 0;
-    }
-    
-    /* FALLBACK jika iframe gagal (akan muncul otomatis lewat JS) */
-    .fallback-video {
-      display: none;
-      margin-top: 20px;
-    }
-    
-    .fallback-btn {
-      display: inline-block;
-      background: #000;
-      color: white;
-      padding: 16px 40px;
-      border-radius: 60px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.2rem;
-      border: 3px solid #ff4f4f;
+      aspect-ratio: 16/9;
+      object-fit: cover;
     }
     
     /* MAPS SECTION */
@@ -265,6 +248,11 @@
       font-weight: 600;
       margin-top: 20px;
       font-size: 1.1rem;
+      transition: background 0.3s;
+    }
+    
+    .map-alt-link:hover {
+      background: #cd8740;
     }
     
     /* ITINERARY */
@@ -390,6 +378,8 @@
       font-size: 5rem;
       cursor: pointer;
       font-weight: 300;
+      line-height: 1;
+      z-index: 10000;
     }
     
     /* TOAST */
@@ -407,12 +397,24 @@
       display: none;
     }
     
+    /* VIDEO CONTROLS CUSTOM */
+    video {
+      width: 100%;
+      height: auto;
+    }
+    
     /* RESPONSIF */
     @media (max-width: 800px) {
       .gallery-grid { grid-template-columns: 1fr; }
       .pricelist-grid { grid-template-columns: 1fr; }
       .container { padding: 20px; }
-      .tiktok-embed-wrapper iframe { height: 550px; }
+    }
+    
+    @media (max-width: 500px) {
+      .agenda-chip { padding: 8px 18px; font-size: 0.9rem; }
+      .subhead-badge { padding: 5px 15px; }
+      .day-card h4 { font-size: 2rem; }
+      .modal-close { font-size: 4rem; top: 15px; right: 20px; }
     }
   </style>
 </head>
@@ -456,24 +458,19 @@
         </div>
       </div>
 
-      <!-- VIDEO TIKTOK LANGSUNG TAMPIL -->
+      <!-- VIDEO VIEW.MP4 -->
       <div class="video-section">
-        <h3><i class="fab fa-tiktok"></i> Suasana di TikTok</h3>
-        <div class="tiktok-embed-wrapper" id="tiktokContainer">
-          <!-- IFRAME TIKTOK LANGSUNG -->
-          <iframe src="https://www.tiktok.com/embed/v2/7592598004150881544" 
-                  allowfullscreen
-                  loading="lazy"
-                  title="TikTok Kalisengon"></iframe>
+        <h3><i class="fas fa-video"></i> Video Pemandangan</h3>
+        <div class="video-wrapper">
+          <video controls playsinline poster="view.jpg">
+            <source src="view.mp4" type="video/mp4">
+            Browser Anda tidak mendukung tag video. 
+            <a href="view.mp4" download>Download video</a>
+          </video>
         </div>
-        
-        <!-- Fallback jika iframe gagal (akan muncul otomatis via JS) -->
-        <div id="tiktokFallback" class="fallback-video">
-          <p style="margin:20px 0; color:#4a3f2a;">Video tidak bisa dimuat? Klik tombol di bawah:</p>
-          <a href="https://www.tiktok.com/@kalisengon/video/7592598004150881544" target="_blank" class="fallback-btn">
-            <i class="fab fa-tiktok"></i> PUTAR DI TIKTOK
-          </a>
-        </div>
+        <p style="margin-top: 18px; color: #4f613f;">
+          <i class="fas fa-phone-alt"></i> Suasana asri pinggir sungai
+        </p>
       </div>
 
       <!-- MAPS GOOGLE -->
@@ -487,7 +484,9 @@
         <a href="https://maps.google.com/?q=Kalisengon+Riverside+Camping+Ground+%26+Eatery" target="_blank" class="map-alt-link">
           <i class="fas fa-directions"></i> BUKA DI APLIKASI MAPS
         </a>
-        <p style="text-align:center; margin-top:15px; font-weight:600;">Sajen, Pacet, Mojokerto 61374</p>
+        <p style="text-align:center; margin-top:15px; font-weight:600;">
+          <i class="fas fa-location-dot"></i> Sajen, Pacet, Mojokerto 61374
+        </p>
       </div>
 
       <!-- ITINERARY -->
@@ -558,44 +557,6 @@
       if(e.key === 'Escape') closeModal();
     });
 
-    // ========== TIKTOK IFRAME DENGAN FALLBACK ==========
-    // Cek apakah iframe berhasil dimuat
-    const tiktokIframe = document.querySelector('.tiktok-embed-wrapper iframe');
-    const fallbackDiv = document.getElementById('tiktokFallback');
-    
-    // Deteksi Android
-    const isAndroid = /Android/i.test(navigator.userAgent);
-    
-    if (isAndroid) {
-      // Untuk Android, kita beri sedikit jeda lalu cek apakah iframe bermasalah
-      setTimeout(function() {
-        // Coba detect apakah iframe kosong (putih) dengan cara sederhana
-        // Jika dalam 3 detik tidak ada error, kita asumsikan berhasil
-        // Tapi untuk jaga-jaga, kita tetap tampilkan fallback sebagai opsi
-        console.log('Android terdeteksi, fallback disiapkan');
-      }, 1000);
-    }
-    
-    // Tambahkan error handler ke iframe
-    tiktokIframe.onerror = function() {
-      // Jika iframe error, tampilkan fallback
-      tiktokIframe.style.display = 'none';
-      fallbackDiv.style.display = 'block';
-    };
-    
-    // Coba deteksi jika iframe tidak bisa dimuat di Android
-    // Beberapa Android memblokir iframe TikTok, kita tampilkan fallback setelah 2 detik
-    setTimeout(function() {
-      // Cek apakah konten iframe dapat diakses (tidak error)
-      // Cara sederhana: jika tinggi iframe 0 atau konten kosong, kita anggap gagal
-      try {
-        // Kita tidak bisa akses konten iframe karena cross-origin, jadi gunakan pendekatan lain
-        // Tampilkan fallback sebagai opsi tambahan saja (tombol di bawah iframe)
-        fallbackDiv.style.display = 'block';
-        fallbackDiv.style.marginTop = '20px';
-      } catch(e) {}
-    }, 3000);
-    
     // ========== COPY NOMOR ==========
     document.getElementById('waCopyBtn').addEventListener('click', function(e) {
       e.preventDefault();
@@ -626,8 +587,19 @@
       }
     });
 
+    // ========== OPTIMASI VIDEO UNTUK ANDROID ==========
+    const video = document.querySelector('video');
+    if (video) {
+      // Pastikan video bisa diputar di Android
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
+      
+      // Preload metadata agar cepat
+      video.preload = 'metadata';
+    }
+
     // ========== OPTIMASI MAPS UNTUK ANDROID ==========
-    if (isAndroid) {
+    if (/Android/i.test(navigator.userAgent)) {
       const mapIframe = document.querySelector('.map-embed iframe');
       if (mapIframe) {
         // Refresh maps sekali agar tidak putih
